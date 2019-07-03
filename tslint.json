@@ -1,0 +1,23 @@
+{
+	"extends": "tslint:recommended",
+	"rules": {
+		"indent": [true, "tabs", 4],
+		"array-type": [true, "array-simple"],
+		"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+		"member-access": [true, "no-public"],
+		"arrow-parens": false,
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "never",
+				"singleline": "never"
+			}
+		],
+		"interface-name": false,
+		"semicolon": [true, "always", "ignore-bound-class-methods"],
+		"curly": [true, "ignore-same-line"],
+		"member-ordering": false,
+		"object-literal-sort-keys": false,
+		"no-console": false
+	}
+}
