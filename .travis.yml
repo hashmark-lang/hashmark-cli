@@ -9,6 +9,7 @@ notifications:
 script:
 - npm run format:check
 - npm run tslint
+- npm run test
 before_deploy:
 - npm run build
 deploy:

@@ -5,12 +5,13 @@ import { convert } from "./commands/convert";
 
 export type CommandModule<Options> = Required<yargs.CommandModule<{}, Options>>;
 
-// tslint:disable-next-line:no-unused-expression
-yargs
+export const cli = yargs
 	.version()
 	.command(convert)
 	.demandCommand(1, "Use one of the above commands")
 	.recommendCommands()
 	.help("h")
 	.alias("h", "help")
-	.alias("v", "version").argv;
+	.alias("v", "version");
+
+cli.parse();

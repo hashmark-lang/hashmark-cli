@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { CommandModule } from "..";
 
-interface ConvertOptions {
+export interface ConvertOptions {
 	file?: string;
 	format: string;
 	output?: string;
@@ -49,7 +49,8 @@ export const convert: CommandModule<ConvertOptions> = {
 			return fs.readFileSync(argv.file, "utf-8");
 		}
 
-		function inferFormat(filePath: string | undefined, defaultFormat: string): string {
+		function inferFormat(filePath: string | undefined): string {
+			const defaultFormat = "json";
 			if (filePath === undefined) {
 				return defaultFormat;
 			}
@@ -59,7 +60,7 @@ export const convert: CommandModule<ConvertOptions> = {
 
 		function stringify(root: Block): string {
 			if (argv.format === "auto") {
-				argv.format = inferFormat(argv.output, "json");
+				argv.format = inferFormat(argv.output);
 			}
 			switch (argv.format.toLowerCase()) {
 				case "json":
@@ -73,6 +74,7 @@ export const convert: CommandModule<ConvertOptions> = {
 
 		function output(result: string): void {
 			if (argv.output) {
+				fs.mkdirSync(path.dirname(argv.output), { recursive: true });
 				fs.writeFileSync(argv.output, result);
 			} else {
 				console.log(result);
@@ -84,8 +86,7 @@ export const convert: CommandModule<ConvertOptions> = {
 			const result = stringify(parsed);
 			output(result);
 		} catch (e) {
-			console.error(chalk.red("Error: " + e.message));
-			console.log();
+			console.error(chalk.red("Error: " + e.message), "\n");
 		}
 	}
 };
