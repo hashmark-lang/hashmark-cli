@@ -4,7 +4,7 @@
 	"description": "CLI for Hashmark documents",
 	"main": "dist/index.js",
 	"bin": {
-		"hm": "dist/hm/index.js"
+		"hm": "dist/index.js"
 	},
 	"keywords": [
 		"Hashmark",
