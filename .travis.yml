@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+cache:
+  directories:
+  - node_modules
+notifications:
+  email: false
+script:
+- npm run format:check
+- npm run tslint
+before_deploy:
+- npm run build
+
