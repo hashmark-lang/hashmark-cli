@@ -5,6 +5,27 @@
 sudo npm install -g @hashmark/cli
 ```
 
+## Usage
+Once installed, the CLI is available through the `hm` command. Currently, the only available command  is `hm convert`, which parses a hashmark document:
+
+```
+$ hm convert --help
+hm convert [options] <file>
+
+Convert Hashmark files
+
+Positionals:
+  file  Path to a Hashmark file                              [string] [required]
+
+Options:
+  --version, -v  Show version number                                   [boolean]
+  --help, -h     Show help                                             [boolean]
+  --format, -f
+   [string] [choices: "auto", "json", "xml"] [default: "auto": infers the format
+                                       from the output file. Defaults to "json"]
+  --output, -o   Write output to a file                                 [string]
+```
+
 ## Development
 Clone the repository, and install dependencies with:
 
