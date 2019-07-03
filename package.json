@@ -12,6 +12,9 @@
 	],
 	"author": "Maxime Kjaer <maxime.kjaer@gmail.com>",
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@hashmark/parser": "0.0.4",
 		"chalk": "^2.4.2",
