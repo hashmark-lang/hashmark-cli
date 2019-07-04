@@ -1,0 +1,11 @@
+src
+test
+benchmark
+demo
+.gitattributes
+.prettierrc.json
+.mocharc.json
+.travis.yml
+tsconfig.json
+tslint.json
+webpack.config.js
