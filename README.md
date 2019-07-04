@@ -1,4 +1,6 @@
 # Hashmark CLI
+[![npm version](https://badge.fury.io/js/%40hashmark%2Fcli.svg)](https://www.npmjs.com/package/@hashmark/cli)
+[![Build Status](https://travis-ci.org/hashmark-lang/hashmark-cli.svg?branch=master)](https://travis-ci.org/hashmark-lang/hashmark-cli)
 
 ## Installation
 ```
