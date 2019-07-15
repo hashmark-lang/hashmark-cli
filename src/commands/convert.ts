@@ -1,4 +1,4 @@
-import { Block, parse, toXML } from "@hashmark/parser";
+import { BlockElement, parse, toJSON, toXML } from "@hashmark/parser";
 import chalk from "chalk";
 import * as fs from "fs";
 import * as path from "path";
@@ -58,13 +58,13 @@ export const convert: CommandModule<ConvertOptions> = {
 			return formats.includes(ext) ? ext : defaultFormat;
 		}
 
-		function stringify(root: Block): string {
+		function stringify(root: BlockElement): string {
 			if (argv.format === "auto") {
 				argv.format = inferFormat(argv.output);
 			}
 			switch (argv.format.toLowerCase()) {
 				case "json":
-					return JSON.stringify(root, null, "\t");
+					return JSON.stringify(toJSON(root));
 				case "xml":
 					return toXML(root);
 				default:
