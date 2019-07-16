@@ -67,28 +67,46 @@ function printValidationError(error: ValidationError, lines: string[], filePath:
 		(pos1, pos2) =>
 			pos1.line - pos2.line || pos1.startCol - pos2.startCol || pos1.endCol - pos2.endCol
 	);
-	const errorLines = new Set(positions.map(pos => pos.line));
-	const contextStartLineNum = Math.max(1, positions[0].line - contextSize);
-	const contextEndLineNum = Math.min(lines.length, positions[0].line + contextSize);
-	const context = lines.slice(contextStartLineNum - 1, contextEndLineNum);
-	const gutterSize = contextEndLineNum.toString().length;
+
+	const lineNumbers = positions.map(pos => pos.line);
+	const errorLines = new Set(lineNumbers);
+	const groups = lineGroups(lineNumbers);
+	const groupSeparator = "\u22EE";
+	const lastLine = groups[groups.length - 1].last + contextSize;
+	const gutterSize = Math.max(groupSeparator.length, lastLine.toString().length);
 
 	printErrorHeader(error, filePath);
 
-	for (let i = 0; i < context.length; ++i) {
-		const lineNumber = contextStartLineNum + i;
-		const isErrorLine = errorLines.has(lineNumber);
-		const indentation = Math.max(0, context[i].search(/[^\t]/));
-		const code = context[i].replace(/\t/g, " ".repeat(tabSize));
+	for (let i = 0; i < groups.length; ++i) {
+		const group = groups[i];
+		const contextStartLineNum = Math.max(1, group.first - contextSize);
+		const contextEndLineNum = Math.min(lines.length, group.last + contextSize);
 
-		// Print line:
-		console.log(lineIndicator(isErrorLine), gutter(gutterSize, contextStartLineNum + i), code);
+		for (let line = contextStartLineNum; line <= contextEndLineNum; ++line) {
+			const j = line - 1;
+			const isErrorLine = errorLines.has(line);
+			const indentation = Math.max(0, lines[j].search(/[^\t]/));
+			const code = lines[j].replace(/\t/g, " ".repeat(tabSize));
 
-		// Print column indicator:
-		if (isErrorLine) {
-			const start = positions[0].startCol + indentation * (tabSize - 1);
-			const end = positions[0].endCol + indentation * (tabSize - 1);
-			console.log(lineIndicator(false), gutter(gutterSize, null), colIndicator(start, end));
+			// Print line:
+			console.log(lineIndicator(isErrorLine), gutter(gutterSize, line), code);
+
+			// Print column indicator:
+			if (isErrorLine) {
+				const start = positions[0].startCol + indentation * (tabSize - 1);
+				const end = positions[0].endCol + indentation * (tabSize - 1);
+				console.log(
+					lineIndicator(false),
+					gutter(gutterSize, null),
+					colIndicator(start, end)
+				);
+			}
+		}
+
+		if (i !== groups.length - 1) {
+			console.log();
+			console.log(lineIndicator(false), gutter(gutterSize, groupSeparator));
+			console.log();
 		}
 	}
 	console.log();
@@ -110,7 +128,7 @@ function lineIndicator(indicate: boolean): string {
 }
 
 // The gutter contains a line number (optionally) and a "│" (unicode 9474, 0x2502) separator:
-function gutter(size: number, lineNumber: number | null): string {
+function gutter(size: number, lineNumber: number | string | null): string {
 	return chalk.gray(
 		String(lineNumber === null ? "" : String(lineNumber)).padStart(size) + " \u2502"
 	);
@@ -119,4 +137,20 @@ function gutter(size: number, lineNumber: number | null): string {
 // The error position is indicated by "^^^^" under it:
 function colIndicator(start: number, end: number): string {
 	return " ".repeat(start - 1) + chalk.bold(chalk.redBright("^".repeat(end - start)));
+}
+
+function lineGroups(lineNumbers: number[]): Array<{ first: number; last: number }> {
+	const first = lineNumbers[0];
+	let currentGroup = { first, last: first };
+	const groups = [currentGroup];
+	for (const lineNumber of lineNumbers) {
+		if (currentGroup.last + contextSize >= lineNumber) {
+			currentGroup.last = lineNumber;
+		} else {
+			// new group:
+			currentGroup = { first: lineNumber, last: lineNumber };
+			groups.push(currentGroup);
+		}
+	}
+	return groups;
 }
