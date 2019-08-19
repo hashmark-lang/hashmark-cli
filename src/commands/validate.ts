@@ -9,19 +9,19 @@ export interface ValidateOptions {
 
 export const validate: CommandModule<ValidateOptions> = {
 	command: "validate <file> <schema>",
-	describe: "Validate a Hashmark file with a Hashmark schema",
+	describe: "Validate a Hashml file with a Hashml schema",
 	aliases: [],
 
 	builder: yargs =>
 		yargs
 			.positional("file", {
-				description: "Path to the Hashmark file to validate",
+				description: "Path to the Hashml file to validate",
 				type: "string",
 				normalize: true,
 				demandOption: true
 			})
 			.positional("schema", {
-				description: "Path to the Hashmark schema file",
+				description: "Path to the Hashml schema file",
 				type: "string",
 				normalize: true,
 				demandOption: true

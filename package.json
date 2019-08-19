@@ -1,13 +1,13 @@
 {
-	"name": "@hashmark/cli",
+	"name": "@hashml/cli",
 	"version": "0.0.2",
-	"description": "CLI for Hashmark documents",
+	"description": "CLI for Hashml documents",
 	"main": "dist/index.js",
 	"bin": {
 		"hm": "dist/index.js"
 	},
 	"keywords": [
-		"Hashmark",
+		"Hashml",
 		"CLI"
 	],
 	"author": "Maxime Kjaer <maxime.kjaer@gmail.com>",
@@ -19,6 +19,10 @@
 		"@hashml/hashml": "^0.2.1",
 		"chalk": "^2.4.2",
 		"yargs": "^13.2.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hashml/hashml-cli.git"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.1.7",

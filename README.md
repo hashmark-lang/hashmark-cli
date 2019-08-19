@@ -1,31 +1,66 @@
-# Hashmark CLI
-[![npm version](https://badge.fury.io/js/%40hashmark%2Fcli.svg)](https://www.npmjs.com/package/@hashmark/cli)
-[![Build Status](https://travis-ci.org/hashmark-lang/hashmark-cli.svg?branch=master)](https://travis-ci.org/hashmark-lang/hashmark-cli)
+# Hashml CLI
+[![npm version](https://badge.fury.io/js/%40hashml%2Fcli.svg)](https://www.npmjs.com/package/@hashml/cli)
+[![Build Status](https://travis-ci.org/hashml/hashml-cli.svg?branch=master)](https://travis-ci.org/hashml/hashml-cli)
 
 ## Installation
 ```
-sudo npm install -g @hashmark/cli
+sudo npm install -g @hashml/cli
 ```
 
 ## Usage
-Once installed, the CLI is available through the `hm` command. Currently, the only available command  is `hm convert`, which parses a hashmark document:
+Once installed, the CLI is available through the `hm` command. This command has two subcommands available:
 
 ```
-$ hm convert --help
-hm convert [options] <file>
+$ hm -h
+hm <command>
 
-Convert Hashmark files
-
-Positionals:
-  file  Path to a Hashmark file                              [string] [required]
+Commands:
+  hm convert [options] <file> <schema>  Convert Hashml files
+  hm validate <file> <schema>           Validate a Hashml file with a Hashml
+                                        schema
 
 Options:
-  --version, -v  Show version number                                   [boolean]
-  --help, -h     Show help                                             [boolean]
-  --format, -f
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
+```
+
+### `hm convert`
+This command converts a Hashml document to JSON or XML:
+
+```
+$ hm convert -h
+hm convert [options] <file> <schema>
+
+Convert Hashml files
+
+Positionals:
+  file    Path to the Hashml file                            [string] [required]
+  schema  Path to the schema file (JSON)                     [string] [required]
+
+Options:
+  -f, --format
    [string] [choices: "auto", "json", "xml"] [default: "auto": infers the format
                                        from the output file. Defaults to "json"]
-  --output, -o   Write output to a file                                 [string]
+  -o, --output   Write output to a file                                 [string]
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
+```
+
+### `hm validate`
+This command verifies that a document respects a given schema:
+
+```
+hm validate <file> <schema>
+
+Validate a Hashml file with a Hashml schema
+
+Positionals:
+  file    Path to the Hashml file to validate              [string] [required]
+  schema  Path to the Hashml schema file                   [string] [required]
+
+Options:
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
 ```
 
 ## Development

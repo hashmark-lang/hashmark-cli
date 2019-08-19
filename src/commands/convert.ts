@@ -17,7 +17,7 @@ const formats = ["json", "xml"];
 
 export const convert: CommandModule<ConvertOptions> = {
 	command: "convert [options] <file> <schema>",
-	describe: "Convert Hashmark files",
+	describe: "Convert Hashml files",
 	aliases: [],
 
 	builder: yargs =>

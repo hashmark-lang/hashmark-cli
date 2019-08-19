@@ -20,4 +20,4 @@ deploy:
     secure: Ar6zAoFn/RAcXv3Pcz9WvnF505c494DhH5HLNWXDRBfnNzSrAfJefcteZ6HLVXb10LM1eCWWcaBNUe0otN+viOBdAB+lPmhl0Bmj4vjHDedFVcr24OGKRPXVC+n1UqFe7QykuJDVMYicldUsQ4TE5BL7jGuotRcNPwuj+5thzQRl437OnDmN7WnQfA9ctx89sFLkiq7KqgDvcnQWKc9WWFUdjnmy0waPlSOZqlbioiaaMchxnqRUPIX0DwPpB0X0Nyu+tcqCgRlF4nFppLg4lt6vUddfmje7UAWtLNIXZV548xDQ5Evx8jCEAFaDNddDPj8xAU2j5a4HGizG3cqxZOSVGAyj0MLIjR0QUPl3B6bKg+D73mm4QsUAEzHrLAz/MdwG7WA4Uo02L+U/WZrleGD0AParQmP9L5165e5sXw/yAw7JqyD9WNcrDwFOmcVnNeLCq9GoGbM8uZkrqJ7tvHaxDmwAtHHWLho/a9+jc4b4chGV1v/ohp/2Hg/3ixZDRN8B7LO/XMfIPLQBALbB7gotSC8SjWwH/p21Q5nCCdXVNfo0kWkNIIFYhFE4jm+I1gkCk4HsAG/kolgSiZEAC1Y2Yw1RFyw18hyIkMuWO98hpx+csPZx9dyPXIkKjzh4NxCC/keWvYehGbM1whoArlbGXbxsWG8sWJhA+ftmIIY=
   on:
     tags: true
-    repo: "hashmark-lang/hashmark-cli"
+    repo: "hashml/hashml-cli"
