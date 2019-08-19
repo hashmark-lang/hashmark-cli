@@ -13,7 +13,7 @@ export const cli = yargs
 	.demandCommand(1, "Use one of the above commands")
 	.recommendCommands()
 	.help()
-	.alias("help", "h")
-	.alias("version", "v");
+	.alias("h", "help")
+	.alias("v", "version");
 
 cli.parse();

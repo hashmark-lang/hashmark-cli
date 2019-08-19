@@ -7,7 +7,7 @@ import { cli } from "../src";
 import { ConvertOptions } from "../src/commands/convert";
 
 function parse(dest: string, args: string, cb: ParseCallback<ConvertOptions>): void {
-	cli.parse(`convert ${args} --output ${dest} test/input/list.hm`, {}, cb);
+	cli.parse(`convert ${args} --output ${dest} test/input/list.hm test/input/schema.json`, {}, cb);
 }
 
 function errorToString(err: Error | undefined): string {
