@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { CommandModule } from "..";
+import { Command } from "../cli";
 import { parseFiles } from "../utils";
 
 export interface ValidateOptions {
@@ -7,7 +7,7 @@ export interface ValidateOptions {
 	file?: string;
 }
 
-export const validate: CommandModule<ValidateOptions> = {
+export const validate: Command<ValidateOptions> = {
 	command: "validate <file> <schema>",
 	describe: "Validate a Hashml file with a Hashml schema",
 	aliases: [],

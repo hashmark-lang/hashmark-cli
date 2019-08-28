@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import { ParseCallback } from "yargs";
-import { cli } from "../src";
+import { cli } from "../src/cli";
 import { ConvertOptions } from "../src/commands/convert";
 
 function parse(dest: string, args: string, cb: ParseCallback<ConvertOptions>): void {

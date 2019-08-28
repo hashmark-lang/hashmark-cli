@@ -2,7 +2,7 @@ import { IRNode, toXML } from "@hashml/hashml";
 import chalk from "chalk";
 import { mkdirSync, writeFileSync } from "fs";
 import * as path from "path";
-import { CommandModule } from "..";
+import { Command } from "../cli";
 import { parseFiles } from "../utils";
 
 export interface ConvertOptions {
@@ -14,7 +14,7 @@ export interface ConvertOptions {
 
 const formats = ["json", "xml"];
 
-export const convert: CommandModule<ConvertOptions> = {
+export const convert: Command<ConvertOptions> = {
 	command: "convert [options] <file> <schema>",
 	describe: "Convert Hashml files",
 	aliases: [],
