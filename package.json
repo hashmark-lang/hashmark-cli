@@ -31,13 +31,15 @@
 		"@types/yargs": "^13.0.0",
 		"chai": "^4.2.0",
 		"mocha": "^6.1.4",
+		"pkg-ok": "^2.3.1",
 		"prettier": "^1.18.2",
+		"rimraf": "^3.0.0",
 		"ts-node": "^8.3.0",
 		"tslint": "^5.18.0",
 		"typescript": "^3.5.2"
 	},
 	"scripts": {
-		"build": "tsc --project tsconfig.build.json",
+		"build": "rimraf dist && tsc --project tsconfig.build.json && pkg-ok",
 		"test": "mocha",
 		"format": "prettier --write {src,test}/**/*.ts *.json",
 		"format:check": "prettier --check {src,test}/**/*.ts *.json",
