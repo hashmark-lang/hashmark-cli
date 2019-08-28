@@ -1,5 +1,6 @@
 import * as yargs from "yargs";
 import { convert, ConvertOptions } from "./commands/convert";
+import { types, TypesOptions } from "./commands/types";
 import { validate, ValidateOptions } from "./commands/validate";
 
 export type Command<Options> = Required<yargs.CommandModule<{}, Options>>;
@@ -12,10 +13,11 @@ export type Command<Options> = Required<yargs.CommandModule<{}, Options>>;
  */
 type CLI<Options> = Options extends any ? yargs.Argv<Options> : never;
 
-export const cli: CLI<ValidateOptions | ConvertOptions> = yargs
+export const cli: CLI<ValidateOptions | ConvertOptions | TypesOptions> = yargs
 	.version()
 	.command(convert)
 	.command(validate)
+	.command(types)
 	.demandCommand(1, "Use one of the above commands")
 	.recommendCommands()
 	.help()

@@ -1,5 +1,6 @@
 import { HMError, IRNode, parse, ValidationError } from "@hashml/hashml";
-import { readFileSync } from "fs";
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { dirname } from "path";
 import { printValidationError } from "./print-errors";
 
 export function parseFiles(filePath: string | undefined, schemaPath: string | undefined): IRNode {
@@ -29,4 +30,13 @@ export function parseFiles(filePath: string | undefined, schemaPath: string | un
 	}
 
 	return node;
+}
+
+export function output(data: string, path: string | undefined): void {
+	if (path) {
+		mkdirSync(dirname(path), { recursive: true });
+		writeFileSync(path, data);
+	} else {
+		console.log(data);
+	}
 }

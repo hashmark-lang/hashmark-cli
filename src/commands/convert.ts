@@ -2,7 +2,7 @@ import { IRNode, toXML } from "@hashml/hashml";
 import { mkdirSync, writeFileSync } from "fs";
 import * as path from "path";
 import { Command } from "../cli";
-import { parseFiles } from "../utils";
+import { output, parseFiles } from "../utils";
 
 export interface ConvertOptions {
 	file?: string;
@@ -72,17 +72,8 @@ export const convert: Command<ConvertOptions> = {
 			}
 		}
 
-		function output(str: string): void {
-			if (argv.output) {
-				mkdirSync(path.dirname(argv.output), { recursive: true });
-				writeFileSync(argv.output, str);
-			} else {
-				console.log(str);
-			}
-		}
-
 		const parsed = parseFiles(argv.file, argv.schema);
 		const result = stringify(parsed);
-		output(result);
+		output(result, argv.output);
 	}
 };

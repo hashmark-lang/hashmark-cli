@@ -50,13 +50,32 @@ Options:
 This command verifies that a document respects a given schema:
 
 ```
+$ hm validate -h
 hm validate <file> <schema>
 
 Validate a Hashml file with a Hashml schema
 
 Positionals:
-  file    Path to the Hashml file to validate              [string] [required]
-  schema  Path to the Hashml schema file                   [string] [required]
+  file    Path to the Hashml file to validate                [string] [required]
+  schema  Path to the Hashml schema file                     [string] [required]
+
+Options:
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
+```
+
+### `hm types`
+This command converts a schema (in JSON format) to a Typescript interface declaration.
+
+```
+$ hm types -h
+hm types <schema> [output]
+
+Convert a Hashml schema to a Typescript file
+
+Positionals:
+  schema  Path to the Hashml schema (in JSON)                [string] [required]
+  output  Typescript file to write to                                   [string]
 
 Options:
   -h, --help     Show help                                             [boolean]
