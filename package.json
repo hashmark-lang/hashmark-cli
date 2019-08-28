@@ -37,7 +37,7 @@
 		"typescript": "^3.5.2"
 	},
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc --project tsconfig.build.json",
 		"test": "mocha",
 		"format": "prettier --write {src,test}/**/*.ts *.json",
 		"format:check": "prettier --check {src,test}/**/*.ts *.json",
