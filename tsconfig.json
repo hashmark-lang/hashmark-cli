@@ -5,7 +5,6 @@
 		"strict": true,
 		"removeComments": true,
 		"resolveJsonModule": true,
-		"preserveConstEnums": true,
 		"sourceMap": true,
 		"declaration": true,
 		"jsx": "react",
