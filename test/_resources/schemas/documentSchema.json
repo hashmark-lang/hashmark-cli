@@ -1,0 +1,208 @@
+{
+    "root": {
+        "rawBody": false,
+        "defaultTag": "paragraph",
+        "props": {
+            "body": {
+                "content": {
+                    "paragraph": {
+                        "min": 0,
+                        "max": 1000
+                    },
+                    "section": {
+                        "min": 0,
+                        "max": 1000
+                    },
+                    "code": {
+                        "min": 0,
+                        "max": 1000
+                    },
+                    "list": {
+                        "min": 0,
+                        "max": 1000
+                    }
+                }
+            }
+        }
+    },
+    "blocks": {
+        "list": {
+            "rawBody": false,
+            "defaultTag": "paragraph",
+            "props": {
+                "head": {
+                    "raw": false,
+                    "name": "title",
+                    "content": [
+                        "link",
+                        "bold",
+                        "code",
+                        "strong",
+                        "inline"
+                    ]
+                },
+                "body": {
+                    "content": {
+                        "paragraph": {
+                            "min": 0,
+                            "max": 1000
+                        }
+                    }
+                }
+            }
+        },
+        "paragraph": {
+            "rawBody": false,
+            "props": {
+                "head": {
+                    "raw": false,
+                    "name": "text",
+                    "content": [
+                        "link",
+                        "bold",
+                        "code",
+                        "strong",
+                        "inline"
+                    ]
+                }
+            }
+        },
+        "section": {
+            "rawBody": false,
+            "defaultTag": "paragraph",
+            "props": {
+                "head": {
+                    "raw": false,
+                    "name": "title",
+                    "content": [
+                        "link",
+                        "bold",
+                        "code",
+                        "strong",
+                        "inline"
+                    ]
+                },
+                "body": {
+                    "content": {
+                        "paragraph": {
+                            "min": 0,
+                            "max": 1000
+                        },
+                        "section": {
+                            "min": 0,
+                            "max": 1000
+                        },
+                        "code": {
+                            "min": 0,
+                            "max": 1000
+                        }
+                    },
+                    "id": {
+                        "id": {
+                            "min": 0,
+                            "max": 1
+                        }
+                    }
+                }
+            }
+        },
+        "id": {
+            "rawBody": false,
+            "props": {
+                "head": {
+                    "raw": true,
+                    "type": "string",
+                    "name": "content"
+                }
+            }
+        },
+        "code": {
+            "rawBody": true,
+            "props": {
+                "head": {
+                    "raw": true,
+                    "type": "string",
+                    "name": "language"
+                },
+                "body": "content"
+            }
+        }
+    },
+    "inline": {
+        "link": {
+            "sugar": {
+                "start": "[",
+                "separator": "](",
+                "end": ")"
+            },
+            "args": [
+                {
+                    "raw": true,
+                    "type": "url",
+                    "name": "url"
+                },
+                {
+                    "raw": false,
+                    "name": "text",
+                    "content": [
+                        "bold"
+                    ]
+                }
+            ]
+        },
+        "bold": {
+            "sugar": {
+                "start": "*",
+                "end": "*"
+            },
+            "args": [
+                {
+                    "raw": false,
+                    "name": "text",
+                    "content": [
+                        "link"
+                    ]
+                }
+            ]
+        },
+        "strong": {
+            "args": [
+                {
+                    "raw": false,
+                    "name": "text",
+                    "content": [
+                        "link"
+                    ]
+                }
+            ]
+        },
+        "code": {
+            "sugar": {
+                "start": "`",
+                "end": "`"
+            },
+            "args": [
+                {
+                    "raw": true,
+                    "type": "string",
+                    "name": "content"
+                }
+            ]
+        },
+        "inline": {
+            "args": [
+                {
+                    "raw": false,
+                    "name": "inlineContent",
+                    "content": [
+                        "link",
+                        "bold",
+                        "code",
+                        "strong",
+                        "inline"
+                    ]
+                }
+            ]
+        }
+    }
+}

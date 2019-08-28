@@ -1,0 +1,10 @@
+{
+    "root": {
+        "rawBody": false,
+        "props": {
+            "body": {}
+        }
+    },
+    "blocks": {},
+    "inline": {}
+}
