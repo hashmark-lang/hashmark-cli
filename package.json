@@ -44,6 +44,8 @@
 		"format": "prettier --write {src,test}/**/*.ts *.json",
 		"format:check": "prettier --check {src,test}/**/*.ts *.json",
 		"tslint": "tslint --project tsconfig.json",
+		"tslint:fix": "tslint --project tsconfig.json --fix",
+		"check": "npm test && npm run format:check && npm run tslint",
 		"preversion": "npm run format:check && npm run tslint",
 		"postversion": "git push && git push --tags"
 	}
