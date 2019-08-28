@@ -2,12 +2,11 @@
 	"compilerOptions": {
 		"target": "esnext",
 		"module": "commonjs",
-		"noImplicitAny": true,
+		"strict": true,
 		"removeComments": true,
 		"resolveJsonModule": true,
 		"preserveConstEnums": true,
 		"sourceMap": true,
-		"strictNullChecks": true,
 		"declaration": true,
 		"jsx": "react",
 		"outDir": "./dist"
