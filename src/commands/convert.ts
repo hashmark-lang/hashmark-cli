@@ -1,9 +1,8 @@
-import { HMError, IRNode, parse, SchemaDefinition, toXML, ValidationError } from "@hashml/hashml";
+import { IRNode, toXML } from "@hashml/hashml";
 import chalk from "chalk";
-import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { mkdirSync, writeFileSync } from "fs";
 import * as path from "path";
 import { CommandModule } from "..";
-import { printValidationError } from "../print-errors";
 import { parseFiles } from "../utils";
 
 export interface ConvertOptions {
@@ -84,7 +83,7 @@ export const convert: CommandModule<ConvertOptions> = {
 		}
 
 		try {
-			const [errors, parsed] = parseFiles(argv.file, argv.schema);
+			const [, parsed] = parseFiles(argv.file, argv.schema);
 			const result = stringify(parsed);
 			output(result);
 		} catch (e) {
