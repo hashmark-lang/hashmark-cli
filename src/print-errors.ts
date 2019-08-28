@@ -69,7 +69,7 @@ function printErrorHeader(error: ValidationError, filePath: string) {
 	console.log(
 		chalk.bold(chalk.redBright(`Error HM${error.code}`)),
 		chalk.blueBright(locationLink),
-		error.message
+		chalk.bold(error.message)
 	);
 }
 
