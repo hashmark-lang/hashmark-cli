@@ -27,7 +27,12 @@ export function parseFiles(
 			// TODO temporary type cast
 			printValidationError(err as ValidationError, file.split(/\n|\r\n|\r/), filePath);
 		}
-		console.log(chalk.redBright(`${errors.length} validation errors were found`));
+		const plural = errors.length > 1;
+		console.log(
+			chalk.redBright(
+				`${errors.length} validation ${plural ? "errors were" : "error was"} found`
+			)
+		);
 	}
 
 	return [errors, node];
