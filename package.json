@@ -1,6 +1,6 @@
 {
 	"name": "@hashml/cli",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"description": "CLI for Hashml documents",
 	"main": "dist/index.js",
 	"bin": {
