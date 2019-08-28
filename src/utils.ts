@@ -1,13 +1,8 @@
-import chalk from "chalk";
-
 import { HMError, IRNode, parse, ValidationError } from "@hashml/hashml";
 import { readFileSync } from "fs";
 import { printValidationError } from "./print-errors";
 
-export function parseFiles(
-	filePath: string | undefined,
-	schemaPath: string | undefined
-): [HMError[], IRNode] {
+export function parseFiles(filePath: string | undefined, schemaPath: string | undefined): IRNode {
 	if (filePath === undefined) {
 		throw new Error("You must define an input file");
 	} else if (schemaPath === undefined) {
@@ -28,12 +23,10 @@ export function parseFiles(
 			printValidationError(err as ValidationError, file.split(/\n|\r\n|\r/), filePath);
 		}
 		const plural = errors.length > 1;
-		console.log(
-			chalk.redBright(
-				`${errors.length} validation ${plural ? "errors were" : "error was"} found`
-			)
+		throw new Error(
+			`${errors.length} validation ${plural ? "errors were" : "error was"} found`
 		);
 	}
 
-	return [errors, node];
+	return node;
 }

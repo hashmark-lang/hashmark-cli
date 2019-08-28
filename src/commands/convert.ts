@@ -1,5 +1,4 @@
 import { IRNode, toXML } from "@hashml/hashml";
-import chalk from "chalk";
 import { mkdirSync, writeFileSync } from "fs";
 import * as path from "path";
 import { Command } from "../cli";
@@ -73,21 +72,17 @@ export const convert: Command<ConvertOptions> = {
 			}
 		}
 
-		function output(result: string): void {
+		function output(str: string): void {
 			if (argv.output) {
 				mkdirSync(path.dirname(argv.output), { recursive: true });
-				writeFileSync(argv.output, result);
+				writeFileSync(argv.output, str);
 			} else {
-				console.log(result);
+				console.log(str);
 			}
 		}
 
-		try {
-			const [, parsed] = parseFiles(argv.file, argv.schema);
-			const result = stringify(parsed);
-			output(result);
-		} catch (e) {
-			console.error(chalk.red("Error: " + e.message), "\n");
-		}
+		const parsed = parseFiles(argv.file, argv.schema);
+		const result = stringify(parsed);
+		output(result);
 	}
 };
